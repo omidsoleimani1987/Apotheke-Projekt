@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Baloo Paaji 2', cursive;
+}
+
+body {
+    background-color: #ffffff;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main.flex {
+    flex-direction: column;
+    width: 100%;
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.section {
+    width: 80%;
+}
+
+#pill-icon {
+    font-size: 48px;
+    color: #ff7315;
+    position: fixed;
+    top: 8;
+    right: 12px;
+}
+
+#back-icon {
+    font-size: 48px;
+    color: #ff7315;
+    position: fixed;
+    top: 8;
+    left: 12px;
+}
+
+a {
+    color: #ff7315;
+}
+
+a.link-button {
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width: 30%;
+    padding: 15px 30px;
+    border-radius: 5px;
+    color: black;
+    background-color: #03e948;
+    margin-bottom: 50px;
+}
+
+table {
+    font-size: 1rem;
+    border-collapse: collapse;
+    background-color: #f4f4f4;
+    padding: 20px 20px;
+    width: 100%;
+    text-align: left;
+}
+
+th,
+td {
+    border-bottom: 1px solid rgb(143, 143, 143);
+}
+
+th {
+    padding: 10px 10px;
+    background-color: #ff7315;
+    color: white;
+}
+
+td {
+    padding: 10px 10px;
+    overflow: hidden;
+}
+
+tr:nth-child(even) {
+    background-color: #dfdfdf;
+}
+
+tr:not(#header):hover {
+    background-color: #2e2d2d;
+    color: white;
+}

@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Baloo Paaji 2', cursive;
+}
+
+body {
+    height: 100vh;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+    width: 300px;
+    transition: 0.3s;
+}
+
+.a {
+    white-space: nowrap;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    text-align: right;
+}
+
+.background {
+    background-image: url('../images/5.png');
+    height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#home_icon {
+    background: transparent;
+    position: fixed;
+    color: #ff7315;
+    top: 10px;
+    left: 20px;
+    font-weight: bolder;
+    font-size: 50px;
+}
+
+h1.success {
+    text-align: center;
+    margin: auto;
+    width: 80%;
+    color: rgb(0, 163, 0);
+}
+
+h1.error {
+    text-align: center;
+    margin: auto;
+    width: 80%;
+    color: rgb(219, 26, 0);
+}
+
+h1.welcome {
+    color: rgb(8, 240, 0);
+    text-align: center;
+    padding: 0;
+    margin-bottom: 30px;
+}
