@@ -33,7 +33,7 @@
                 
                 //creating the link:
                 $url = "http://www.omidsoleimani.com/app/resetpasscheck_page.php?selectorToken=" . $selectorToken . "&email=" .$this->email;
-                $expire = date("U") + 1800;
+                $expire = date("U") + 3600;
 
                 //first we make sure there is no token of the same email(user) address in DB:
                 $this->deleteToken($this->email);
