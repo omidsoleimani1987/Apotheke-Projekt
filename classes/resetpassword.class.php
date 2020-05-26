@@ -35,15 +35,12 @@
         public function passwordValidate($data1, $data2) {
             if(empty($data1) || trim($data1) == '') {
                 $this->error['password'] = 'Das Feld "Passwort" ist auszufüllen.';
-            } else {
-                $this->password = password_hash($data1, PASSWORD_DEFAULT);
-            }
-            if(empty($data2)  || trim($data2) == '') {
+            } elseif(empty($data2)  || trim($data2) == '') {
                 $this->error['repassword'] = 'Das Feld "Passwort wiederholen" ist auszufüllen.';
             } elseif(trim($data1) !== trim($data2)) {
                 $this->error['repassword'] = "Ihre Passworteingaben stimmen nicht überein.";
             } else {
-                $this->repassword = htmlspecialchars($data2);
+                $this->password = password_hash($data1, PASSWORD_DEFAULT);
             }
         }
         
