@@ -1,12 +1,12 @@
 <?php
-
-//auto loader function is used in every page  
+/**
+ * auto loader function is used in every page
+ */
 spl_autoload_register('myAutoLoader');
 
 function myAutoLoader($className) {
     
     $path = $_SERVER['DOCUMENT_ROOT'].'/classes/';
-    // $path = '../classes/';
     $extention = '.class.php';
     $fullPath = $path . strtolower($className) . $extention;
 

@@ -2,10 +2,14 @@
 
 session_start();
 
-//class auto loader:
+/**
+ * class auto loader:
+ */
 require $_SERVER["DOCUMENT_ROOT"].'/includes/autoloader.inc.php';
 
-//config:
+/**
+ * config:
+ */
 require $_SERVER["DOCUMENT_ROOT"].'/includes/config.inc.php';
 
 ?>
@@ -22,11 +26,14 @@ require $_SERVER["DOCUMENT_ROOT"].'/includes/config.inc.php';
     <title>Fehler</title>
 </head>
 <body>
+    <!-- header start -->
     <header>
         <span id="pill-icon"><i class="fas fa-capsules"></i></span>
         <span id="back-icon"><a href="home_page.php"><i class="fas fa-arrow-circle-left"></i></a></span>
     </header>
+    <!-- header end -->
     <main>
+        <!-- error_preview start -->
         <section class="flex container">
             <span><i class="fas fa-exclamation-circle"></i></span>
             <div class="flex">
@@ -34,6 +41,7 @@ require $_SERVER["DOCUMENT_ROOT"].'/includes/config.inc.php';
                 <h3><?php echo $_GET['message']; ?></h3>
             </div>
         </section>
+        <!-- error_preview end -->
     </main>
 </body>
 </html>

@@ -1,28 +1,40 @@
 <?php
-    session_start();
-    
-    //class auto loader:
-    require $_SERVER["DOCUMENT_ROOT"].'/includes/autoloader.inc.php';
+session_start();
+/**
+ * class auto loader:
+ */
+require $_SERVER["DOCUMENT_ROOT"].'/includes/autoloader.inc.php';
 
-    //config:
-    require $_SERVER["DOCUMENT_ROOT"].'/includes/config.inc.php';
+/**
+ * config:
+ */
+require $_SERVER["DOCUMENT_ROOT"].'/includes/config.inc.php';
     
-    // check if user is already logged in
-    userLogoutStatus('Sie haben schon eingeloggt');
+/**
+ * check if user is already logged in
+ */
+userLogoutStatus('Sie haben schon eingeloggt');
+/**
+ * check if user comes from signup_page after registering :
+ */   
+checkMessage();
     
-    // check if user comes from signup_page after registering :
-    checkMessage();
-    
-    //validation:
-    $userobject = new UserLogin;
+/**
+ * validation:
+ */
+$userobject = new UserLogin;
 
-    if(count($_POST) > 0) {
-        //validating the form inputs:
-        $userobject->usernameValidate(trim($_POST['username']));
-        $userobject->passwordValidate(trim($_POST['password']));
-        //controlling error array:
-        $userobject->checkError();
-    }
+if(count($_POST) > 0) {
+    /**
+     * validating the form inputs:
+     */
+    $userobject->usernameValidate(trim($_POST['username']));
+    $userobject->passwordValidate(trim($_POST['password']));
+    /**
+     * controlling error array:
+     */
+    $userobject->checkError();
+}
 ?>
 
 <!DOCTYPE html>
@@ -38,10 +50,13 @@
     <title>Login</title>
 </head>
 <body>
+    <!-- header start -->
     <header>
     <span id="pill-icon"><i class="fas fa-capsules"></i></span>
     </header>
+    <!-- header end -->
     <main>
+        <!-- form start -->
         <section class="flex container">
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" autocomplete="off" class="flex">
                 <h1 class="title">login</h1>
@@ -58,6 +73,7 @@
                 <a class="register" href="signup_page.php">Registrieren</a>
             </form>
         </section>
+        <!-- form end -->
     </main>
 </body>
 </html>

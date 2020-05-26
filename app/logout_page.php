@@ -1,10 +1,16 @@
 <?php
 session_start();
-
-//class auto loader:
+/**
+ * class auto loader:
+ */
 require $_SERVER["DOCUMENT_ROOT"].'/includes/autoloader.inc.php';
 
-//config:
+/**
+ * config:
+ */
 require $_SERVER["DOCUMENT_ROOT"].'/includes/config.inc.php';
 
+/**
+ * logout function from config file:
+ */
 logout();

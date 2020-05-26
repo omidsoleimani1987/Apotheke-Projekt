@@ -1,17 +1,21 @@
 <?php
-
 session_start();
-
-//class auto loader:
+/**
+ * class auto loader:
+ */
 require $_SERVER["DOCUMENT_ROOT"].'/includes/autoloader.inc.php';
 
-//config:
+/**
+ * config:
+ */
 require $_SERVER["DOCUMENT_ROOT"].'/includes/config.inc.php';
-
-// check if user is logged in
+/**
+ * check if user is logged in
+ */   
 userLoginStatus('Bitte loggen Sie zuerst ein.');
-
-// check if there is a message of successful operation :
+/**
+ * check if there is a message of successful operation
+ */ 
 checkMessage();
 
 $searchobject = new SearchFile;

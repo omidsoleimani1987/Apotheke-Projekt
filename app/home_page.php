@@ -2,18 +2,28 @@
 
 session_start();
 
-//class auto loader:
+/**
+ * class auto loader:
+ */
 require $_SERVER["DOCUMENT_ROOT"].'/includes/autoloader.inc.php';
 
-//config:
+/**
+ * config:
+ */
 require $_SERVER["DOCUMENT_ROOT"].'/includes/config.inc.php';
 
-// check if user is logged in
+/**
+ * check if user is already logged in
+ */
 userLoginStatus('Bitte loggen Sie zuerst ein.');
-
-// check if there is a message of successful operation :
+/**
+ * check if there is a message of successful operation :
+ */
 checkMessage();
 
+/**
+ * reset some sessions :
+ */
 $_SESSION['libraryFilename'] = '';
 $_SESSION['libraryFileExtension'] = '';
 $_SESSION['libraryFilepath'] = '';
@@ -37,6 +47,7 @@ $_SESSION['resetPasswordEmail'] = '';
     <title>Start Seite</title>
 </head>
 <body>
+    <!-- sidebar start -->
     <span id="home_icon" style="cursor:pointer" onclick="openNav()">&#9776;</span>
     <div class="background"></div>
     <aside>
@@ -57,7 +68,7 @@ $_SESSION['resetPasswordEmail'] = '';
             <a class="a" href="logout_page.php" style="display:block; width:30%;"><span style="color: #ff0000;"><i class="fas fa-power-off"></i></span> Abmelden</a>
         </div>
     </aside>
+    <!-- sidebar end -->
     <script src="../script/home_page.js"></script>
-    
 </body>
 </html>

@@ -1,20 +1,27 @@
 <?php
 session_start();
-
-//class auto loader:
+/**
+ * class auto loader:
+ */
 require $_SERVER["DOCUMENT_ROOT"].'/includes/autoloader.inc.php';
 
-//config:
+/**
+ * config:
+ */
 require $_SERVER["DOCUMENT_ROOT"].'/includes/config.inc.php';
-
-// check if user is logged in
+    
+/**
+ * check if user is logged in
+ */
 userLoginStatus('Bitte loggen Sie zuerst ein.');
 
 // check if user reach this page from searchfile_page.php or not:
 searchfileStatus('Bitte suchen Sie zuerst eine Ware aus');
-
-//first: with this id ($_GET['id']) we search into "buy" table from DB for the name of the file with this id:
-//second: with the file name, we find the table in DB, and then  we read the records of table and show them as a table to user: 
+/**
+ * first: with this id ($_GET['id']) we search into "buy" table from DB for the name of the file with this id:
+ *
+ * second: with the file name, we find the table in DB, and then  we read the records of table and show them as a table to user
+ */
 $id = $_GET['id'];
 $seefileobject = new SeeFile;
 ?>

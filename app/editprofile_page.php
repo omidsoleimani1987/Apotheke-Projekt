@@ -2,16 +2,24 @@
 
 session_start();
 
-//class auto loader:
+/**
+ * class auto loader:
+ */
 require $_SERVER["DOCUMENT_ROOT"].'/includes/autoloader.inc.php';
 
-//config:
+/**
+ * config:
+ */
 require $_SERVER["DOCUMENT_ROOT"].'/includes/config.inc.php';
 
-// check if user is logged in
+/**
+ * check if user is already logged in
+ */
 userLoginStatus('Bitte loggen Sie zuerst ein.');
 
-//validation:
+/**
+ * validation:
+ */
 $editprofileobject = new EditProfile($_SESSION['username']);
 
 if(count($_POST) > 0) {
@@ -32,11 +40,14 @@ if(count($_POST) > 0) {
     <title>Profil bearbeiten</title>
 </head>
 <body>
+    <!-- header start -->
     <header>
         <span id="pill-icon"><i class="fas fa-capsules"></i></span>
         <span id="back-icon"><a href="home_page.php"><i class="fas fa-arrow-circle-left"></i></a></span>
     </header>
+    <!-- header end -->
     <main>
+        <!-- form start -->
         <section class="flex container">
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" autocomplete="off" class="flex">
                 
@@ -64,6 +75,7 @@ if(count($_POST) > 0) {
 
             </form>
         </section>
+        <!-- form end -->
     </main>
 </body>
 </html>

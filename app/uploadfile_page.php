@@ -1,26 +1,34 @@
 <?php
-
 session_start();
-
-//class auto loader:
+/**
+ * class auto loader:
+ */
 require $_SERVER["DOCUMENT_ROOT"].'/includes/autoloader.inc.php';
 
-//config:
+/**
+ * config:
+ */
 require $_SERVER["DOCUMENT_ROOT"].'/includes/config.inc.php';
-
-// check if user is logged in
+    
+/**
+ * check if user is logged in
+ */
 userLoginStatus('Bitte loggen Sie zuerst ein.');
 
-//validation:
+/**
+ * validation:
+ */
 $fileobject = new UploadFile($_SESSION['username']);
-
-//phpspreadsheet
+/**
+ * phpspreadsheet import link
+ */
 require $_SERVER["DOCUMENT_ROOT"].'/phpspreadsheet/vendor/autoload.php';
 use PhpOffice\PhpSpreadsheet\IOFactory;
 
 if(count($_POST) > 0) {
-
-    //validating the form inputs:
+    /**
+     * validating the form inputs
+     */
     $fileobject->yearValidate(trim($_POST['year']));
     $fileobject->monthValidate(trim($_POST['month']));
     $fileobject->companyValidate(trim($_POST['company']));
@@ -28,8 +36,9 @@ if(count($_POST) > 0) {
     $fileobject->sendtoValidate(trim($_POST['sendto']));
     $fileobject->detailValidate(trim($_POST['detail']));
     $fileobject->extensionValidate();
-
-    //controlling error array:
+    /**
+     * controlling error array
+     */
     $resultStatus = $fileobject->checkError();
     if($resultStatus == true) {
 
@@ -45,7 +54,9 @@ if(count($_POST) > 0) {
 
         /////////////////////end of phpspreadsheet part////////////////////////
 
-        //now: create the database and then inserting the excel data into created database:
+        /**
+         * now: create the database and then inserting the excel data into created database:
+         */
         $savingResult = $fileobject->saveExcel($excel);
         if($savingResult == true) {
             //after insertion the excel file into DB , we delete the File of local storage:

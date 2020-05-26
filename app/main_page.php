@@ -1,20 +1,31 @@
 <?php
 session_start();
-
-//class auto loader:
+/**
+ * class auto loader:
+ */
 require $_SERVER["DOCUMENT_ROOT"].'/includes/autoloader.inc.php';
 
-//config:
+/**
+ * config:
+ */
 require $_SERVER["DOCUMENT_ROOT"].'/includes/config.inc.php';
-
-// check if user is logged in
+    
+/**
+ * check if user is logged in
+ */
 userLoginStatus('Bitte loggen Sie zuerst ein.');
 
+/**
+ * set the name of the table from DB to use it in the next pages
+ */
 $tableName = $_SESSION['fileTableName'];
-
+/**
+ * validation:
+ */
 $mainobject = new Main;
-
-// these two if conditions to prevent errors when the user send the post and the form action refers to same page , so we will not have error because of not defined variable $_GET['medId']:
+/**
+ * these two if conditions to prevent errors when the user send the post and the form action refers to same page , so we will not have error because of not defined variable $_GET['medId']
+ */
 if(count($_POST) > 0) {
     $_GET['medId'] = '';
     $tableName = $_SESSION['fileTableName'];
@@ -25,15 +36,18 @@ if(count($_POST) > 0) {
     
     header ('location: searchwork_page.php');
 }
-
+/**
+ * fixing the error of not define variable of GET when we come to this page again after submitting the form
+ */
 if($_GET['medId'] != '') {
     $medId = $_GET['medId'];
     $_SESSION['medId'] = $medId;
 } else {
     $medId = $_SESSION['medId'];
 }
-
-// get actual information of DB about the table and show it in page before sending the post
+/**
+ * get actual information of DB about the table and show it in page before sending the post
+ */
 $ResultArray = $mainobject->readMed($tableName, $medId);
 
 ?>
@@ -51,10 +65,13 @@ $ResultArray = $mainobject->readMed($tableName, $medId);
     <title>Hauptseite</title>
 </head>
 <body>
+    <!-- header start -->
     <header>
         <span id="back-icon"><a href="searchwork_page.php"><i class="fas fa-arrow-circle-left"></i></a></span>
     </header>
+    <!-- header end -->
     <main>
+        <!-- form (with some infos inside it) start -->
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" autocomplete="off">
             <div class="first">
                 <div class="container" id="one">
@@ -161,6 +178,7 @@ $ResultArray = $mainobject->readMed($tableName, $medId);
                 <input type="submit" value="Send">
             </div>
         </form>
+        <!-- form end -->
     </main>
     <script src="../script/main_page.js"></script>
 </body>

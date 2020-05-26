@@ -1,19 +1,30 @@
 <?php
-    session_start();
+session_start();
     
-    //class auto loader:
-    require $_SERVER["DOCUMENT_ROOT"].'/includes/autoloader.inc.php';
+/**
+ * class auto loader:
+ */
+require $_SERVER["DOCUMENT_ROOT"].'/includes/autoloader.inc.php';
 
-    //config:
-    require $_SERVER["DOCUMENT_ROOT"].'/includes/config.inc.php';
-    
-    $forgetobject = new ForgetPassword;
+/**
+ * config:
+ */
+require $_SERVER["DOCUMENT_ROOT"].'/includes/config.inc.php';
+/**
+ * validation:
+ */   
+$forgetobject = new ForgetPassword;
 
-    if(count($_POST) > 0) {
-        //validating the form input:
-        $forgetobject->emailValidate(trim($_POST['email']));
-        $forgetobject->checkError();
-    }
+if(count($_POST) > 0) {
+    /**
+     * validating the form inputs:
+     */
+    $forgetobject->emailValidate(trim($_POST['email']));
+    /**
+     * controlling error array:
+     */ 
+    $forgetobject->checkError();
+}
 ?>
 
 <!DOCTYPE html>
@@ -29,11 +40,14 @@
     <title>Passwort vergessen</title>
 </head>
 <body>
+    <!-- header start -->
     <header>
         <span id="pill-icon"><i class="fas fa-capsules"></i></span>
         <span id="back-icon"><a href="login_page.php"><i class="fas fa-arrow-circle-left"></i></a></span>
     </header>
+    <!-- header end -->
     <main>
+        <!-- form start -->
         <section class="flex container">
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" autocomplete="off" class="flex">
                 
@@ -46,6 +60,7 @@
                 <input type="submit" value="Weiter" class="button" />
             </form>
         </section>
+        <!-- form end -->
     </main>
 </body>
 </html>

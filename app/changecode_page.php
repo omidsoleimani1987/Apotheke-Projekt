@@ -1,25 +1,34 @@
 <?php
 
 session_start();
-
-//class auto loader:
+/**
+ * class auto loader:
+ */
 require $_SERVER["DOCUMENT_ROOT"].'/includes/autoloader.inc.php';
 
-//config:
+/**
+ * config:
+ */
 require $_SERVER["DOCUMENT_ROOT"].'/includes/config.inc.php';
     
-// check if user is already logged in
+/**
+ * check if user is already logged in
+ */
 userLoginStatus('Bitte loggen Sie zuerst ein.');
 
-//validation:
+/**
+ * validation:
+ */
 $codeobject = new CodeChange;
     
 if(count($_POST) > 0) {
-
-    //validating the form inputs:
+    /**
+     * validating the form inputs:
+     */
     $codeobject->codeValidate(trim($_POST['code']), trim($_POST['recode']));
-                        
-    //controlling error array:
+    /**
+     * controlling error array:
+     */                   
     $codeobject->checkError();
 }
 
@@ -38,11 +47,14 @@ if(count($_POST) > 0) {
     <title>Registerieren</title>
 </head>
 <body>
+    <!-- header start -->
     <header>
         <span id="pill-icon"><i class="fas fa-capsules"></i></span>
         <span id="back-icon"><a href="home_page.php"><i class="fas fa-arrow-circle-left"></i></a></span>
     </header>
+    <!-- header end -->
     <main>
+        <!-- form start -->
         <section class="flex container">
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="flex" autocomplete="off">
                 
@@ -57,6 +69,7 @@ if(count($_POST) > 0) {
                 <input type="submit" value="Speichern" class="button" />
             </form>
         </section>
+        <!-- form end -->
     </main>
 </body>
 </html>

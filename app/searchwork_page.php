@@ -1,22 +1,30 @@
 <?php
-
 session_start();
-
-//class auto loader:
+/**
+ * class auto loader:
+ */
 require $_SERVER["DOCUMENT_ROOT"].'/includes/autoloader.inc.php';
 
-//config:
+/**
+ * config:
+ */
 require $_SERVER["DOCUMENT_ROOT"].'/includes/config.inc.php';
-
-// check if user is logged in
+    
+/**
+ * check if user is logged in
+ */
 userLoginStatus('Bitte loggen Sie zuerst ein.');
 
+/**
+ * set the name of the table from DB to use it in the next pages
+ */
 $tableName = $_SESSION['fileTableName'];
 $_SESSION['medId'] = '';
 
 $searchworkobject = new Searchwork($tableName);
-
-//first we get the all information about this table of DB to create the Summe row in table and show the information to user:
+/**
+ * first we get the all information about this table of DB to create the Summe row in table and show the information to user
+ */
 $rowresult = $searchworkobject->setRowSumme();
 
 if($rowresult == true) {
@@ -24,8 +32,9 @@ if($rowresult == true) {
 } else {
     echo '<hr>Failed to create Summe row and column<hr>';
 } 
-
-// we want to show some actual info on page from DB 
+/**
+ * we want to show some actual info on page from DB
+ */
 $allResultArray = $searchworkobject->getSumme();
 $SummeRowId = count($allResultArray) - 1;
 
@@ -124,6 +133,9 @@ $SummeRowId = count($allResultArray) - 1;
         </section>
         <section class="three">
             <?php
+            /**
+             * validation:
+             */
             if(count($_POST) > 0) {
             $searchworkobject->titleValidate($_POST['title']);
             $searchworkobject->checkError();

@@ -1,29 +1,39 @@
 <?php
-
 session_start();
-
-//class auto loader:
+/**
+ * class auto loader:
+ */
 require $_SERVER["DOCUMENT_ROOT"].'/includes/autoloader.inc.php';
 
-//config:
+/**
+ * config:
+ */
 require $_SERVER["DOCUMENT_ROOT"].'/includes/config.inc.php';
     
-// check if user is already logged in
+/**
+ * check if user is already logged in
+ */   
 userLogoutStatus('Bitte loggen Sie zuerst aus.');
 
-//validation:
+/**
+ * validation:
+ */
 $userobject = new UserSignup;
     
 if(count($_POST) > 0) {
 
-    //validating the form inputs:
+    /**
+     * validating the form inputs
+     */
     $userobject->firstnameValidate(trim($_POST['firstname']));
     $userobject->lastnameValidate(trim($_POST['lastname']));
     $userobject->emailValidate(trim($_POST['email']));
     $userobject->usernameValidate(trim($_POST['username']));
     $userobject->passwordValidate(trim($_POST['password']), trim($_POST['repassword']));
                         
-    //controlling error array:
+    /**
+     * controlling error array
+     */
     $userobject->checkError();
 }
 
@@ -42,11 +52,14 @@ if(count($_POST) > 0) {
     <title>sign up</title>
 </head>
 <body>
+    <!-- header start -->
     <header>
         <span id="pill-icon"><i class="fas fa-capsules"></i></span>
         <span id="back-icon"><a href="login_page.php"><i class="fas fa-arrow-circle-left"></i></a></span>
     </header>
+    <!-- header end -->
     <main>
+        <!-- form start -->
         <section class="flex container">
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="flex" autocomplete="off">
                 <h1 class="title">Persönliche Daten</h1>
@@ -74,6 +87,7 @@ if(count($_POST) > 0) {
                 <input type="submit" value="Speichern" class="button" />
             </form>
         </section>
+        <!-- form end -->
     </main>
 </body>
 </html>
