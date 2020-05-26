@@ -21,14 +21,18 @@
             
             $currentDate = date("U");
             
-            if($checkToken == true && $this->tokenRecord['expire'] > $currentDate) {
-                $_SESSION['resetPasswordEmail'] = $email;
-                header("Location: $app_path/app/resetpassword_page.php");
+            if($checkToken == true) {
+                if($this->tokenRecord['expire'] > $currentDate) {
+                    $_SESSION['resetPasswordEmail'] = $email;
+                    header("Location: $app_path/app/resetpassword_page.php");
+                } else {
+                    $message = 'Die Daten sind abgelaufen, bitte versuchen Sie noch einmal.';
+                    header("Location: $app_path/app/error_page.php?message=$message");
+                }
             } else {
-                $message = 'Die Daten sind falsch oder abgelaufen, bitte versuchen Sie noch einmal.';
+                $message = 'Die Daten sind falsch, bitte versuchen Sie noch einmal.';
                 header("Location: $app_path/app/error_page.php?message=$message");
             }
-            
         }
         
         //validate inputs:
