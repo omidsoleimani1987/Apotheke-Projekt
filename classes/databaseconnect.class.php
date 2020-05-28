@@ -1,12 +1,23 @@
 <?php
 
+/**
+ * Undocumented class
+ */
 class DatabaseConnect {
-
+    /**
+     * Undocumented variable
+     *
+     * @var string
+     */
     private $host = "188.121.44.188:3306";
     private $username = "omidsoleimani";
     private $password = "omid123456";
     private $databaseName = "wienerberg_apotheke";
-
+    /**
+     * Undocumented function
+     *
+     * @return void
+     */
     protected function connect() {
       //data source name dsn
       //we define what kind of db we use which is mysql

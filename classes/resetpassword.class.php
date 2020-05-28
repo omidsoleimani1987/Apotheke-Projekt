@@ -12,11 +12,11 @@
 
             //read the token (selector and expire date) of DB
             $this->tokenRecord = $this->readTokenAll($email);
-            
+            $checkToken = false;
             if ($token == $this->tokenRecord['selector']) {
-                $checkToken == true;
+                $checkToken = true;
             } else {
-                $checkToken == false;
+                $checkToken = false;
             }
             
             $currentDate = date("U");
@@ -29,7 +29,7 @@
                     $message = 'Die Daten sind abgelaufen, bitte versuchen Sie noch einmal.';
                     header("Location: $app_path/app/error_page.php?message=$message");
                 }
-            } else {
+            }else {
                 $message = 'Die Daten sind falsch, bitte versuchen Sie noch einmal.';
                 header("Location: $app_path/app/error_page.php?message=$message");
             }
