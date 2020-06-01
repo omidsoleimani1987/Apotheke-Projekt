@@ -14,7 +14,10 @@ require $_SERVER["DOCUMENT_ROOT"].'/includes/config.inc.php';
  * check if user is logged in
  */
 userLoginStatus('Bitte loggen Sie zuerst ein.');
-
+/**
+ * check if there is a message of successful operation
+ */ 
+checkMessage();
 /**
  * set the name of the table from DB to use it in the next pages
  */

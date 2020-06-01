@@ -394,20 +394,19 @@ class SetQuery extends DatabaseConnect {
 
             $result = $stmt->fetchAll();
             if(!$result) {
-                throw new Exception('unable to fetch from database');
+                throw new Exception('Keine Ergebnisse gefunden');
             }
 
             return $result;
 
         } catch(Exception $err) {
-
             $message = $err->getMessage();
-            header("Location: $app_path/app/error_page.php?message=$message");
-             
+            header("Location: searchwork_page.php?message=$message&status=fail");
+            // header("Location: $app_path/app/searchwork_page.php?message=$message&status=fail");
         }
     }
 
-    //here the functions for the adding Summe row and summe columns 
+    //here the functions for the adding Summe row and Summe columns 
     protected function createSummeColumn($tableName, $id, $rowSumme_k, $rowSumme_v){
         //need to have true return
         $sql = "UPDATE $tableName SET Summe_k=$rowSumme_k, Summe_v=$rowSumme_v WHERE id=$id";

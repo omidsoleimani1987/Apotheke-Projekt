@@ -92,7 +92,7 @@ class Searchwork extends SetQuery {
         }
     }
 
-    //here we create the sum coulmn (the sum of each row)
+    //here we create the sum column (the sum of each row)
     public function setRowSumme() {
         $ResultArray = $this->readAllMed($this->tableName);
         $summeId = count($ResultArray) - 1;
