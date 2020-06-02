@@ -245,7 +245,7 @@ class SetQuery extends DatabaseConnect {
 
     ///////////////// search database for excel file section /////////////////
 
-    // search excel files from DB with year nad month and company name:
+    // search excel files from DB with year and month and company name:
     protected function searchfile($par1, $par2) {
         $str = "'%" . $par2 . "%'";
         $sql = "SELECT id, username, years, months, company, arts, sendto, detail, ourstatus, lastedit FROM buy WHERE years=$par1 AND company LIKE $str ORDER BY lastedit DESC";
@@ -401,8 +401,7 @@ class SetQuery extends DatabaseConnect {
 
         } catch(Exception $err) {
             $message = $err->getMessage();
-            header("Location: searchwork_page.php?message=$message&status=fail");
-            // header("Location: $app_path/app/searchwork_page.php?message=$message&status=fail");
+            header("Location: $app_path/app/searchwork_page.php?message=$message&status=fail");
         }
     }
 

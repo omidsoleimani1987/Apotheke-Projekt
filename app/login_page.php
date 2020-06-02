@@ -60,7 +60,7 @@ if(count($_POST) > 0) {
         <section class="flex container">
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" autocomplete="off" class="flex">
                 <h1 class="title">login</h1>
-                <input type="text" name="username" class="input" placeholder="Benutzername" required="required" value="<?php echo $userobject->username; ?>" />
+                <input type="text" name="username" class="input" placeholder="Benutzername" required="required" value="<?php echo $userobject->username; ?>" autofocus="autofocus" />
                 <small><?php echo $userobject->error['username']; ?></small>
                 
                 <input type="password" name="password" class="input" placeholder="Passwort" required="required" />
