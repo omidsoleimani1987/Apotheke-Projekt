@@ -9,10 +9,10 @@ class DatabaseConnect {
      *
      * @var string
      */
-    private $host = "188.121.44.188:3306";
-    private $username = "omidsoleimani";
-    private $password = "omid123456";
-    private $databaseName = "wienerberg_apotheke";
+    private $host = "localhost";
+    private $username = "root";
+    private $password = "";
+    private $databaseName = "wifi";
     /**
      * Undocumented function
      *
