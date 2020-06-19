@@ -1,4 +1,3 @@
-
 <?php
 /**
  * a variable for the root server used in "header" functions in pages
