@@ -2,7 +2,7 @@
 
 class Searchwork extends SetQuery {
     
-    // in this class(page) we need to create a sum row and sum column of the values from table and update it every time we get to this page, because or deafault structure is that our excel file has no sum row and column 
+    // in this class(page) we need to create a sum row and sum column of the values from table and update it every time we get to this page, because or default structure is that our excel file has no sum row and column 
     public  $title = '';
     public  $tableName = '';
     public  $error = array('title'=>'');

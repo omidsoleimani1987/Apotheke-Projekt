@@ -32,39 +32,51 @@ window.addEventListener('load', function () {
   herba_rest = parseInt(document.getElementById('herba_rest').innerText);
 
   adler_input = document.getElementById('adler_input');
-  document.getElementById('adler').addEventListener('click', function () {
+  document.querySelector('.adler_click').addEventListener('click', function () {
     adler_input.value = adler_rest;
   });
   billroth_input = document.getElementById('billroth_input');
-  document.getElementById('billroth').addEventListener('click', function () {
-    billroth_input.value = billroth_rest;
-  });
+  document
+    .querySelector('.billroth_click')
+    .addEventListener('click', function () {
+      billroth_input.value = billroth_rest;
+    });
   citygate_input = document.getElementById('citygate_input');
-  document.getElementById('citygate').addEventListener('click', function () {
-    citygate_input.value = citygate_rest;
-  });
+  document
+    .querySelector('.citygate_click')
+    .addEventListener('click', function () {
+      citygate_input.value = citygate_rest;
+    });
   hoffnung_input = document.getElementById('hoffnung_input');
-  document.getElementById('hoffnung').addEventListener('click', function () {
-    hoffnung_input.value = hoffnung_rest;
-  });
+  document
+    .querySelector('.hoffnung_click')
+    .addEventListener('click', function () {
+      hoffnung_input.value = hoffnung_rest;
+    });
   retz_input = document.getElementById('retz_input');
-  document.getElementById('retz').addEventListener('click', function () {
+  document.querySelector('.retz_click').addEventListener('click', function () {
     retz_input.value = retz_rest;
   });
   wienerberg_input = document.getElementById('wienerberg_input');
-  document.getElementById('wienerberg').addEventListener('click', function () {
-    wienerberg_input.value = wienerberg_rest;
-  });
+  document
+    .querySelector('.wienerberg_click')
+    .addEventListener('click', function () {
+      wienerberg_input.value = wienerberg_rest;
+    });
   phönix_input = document.getElementById('phönix_input');
-  document.getElementById('phönix').addEventListener('click', function () {
-    phönix_input.value = phönix_rest;
-  });
+  document
+    .querySelector('.phönix_click')
+    .addEventListener('click', function () {
+      phönix_input.value = phönix_rest;
+    });
   kwizda_input = document.getElementById('kwizda_input');
-  document.getElementById('kwizda').addEventListener('click', function () {
-    kwizda_input.value = kwizda_rest;
-  });
+  document
+    .querySelector('.kwizda_click')
+    .addEventListener('click', function () {
+      kwizda_input.value = kwizda_rest;
+    });
   herba_input = document.getElementById('herba_input');
-  document.getElementById('herba').addEventListener('click', function () {
+  document.querySelector('.herba_click').addEventListener('click', function () {
     herba_input.value = herba_rest;
   });
 
