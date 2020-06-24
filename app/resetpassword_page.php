@@ -35,7 +35,7 @@ if(count($_POST) > 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="omid soleimani" />
     <link href="../style/fontawesome/css/all.css" rel="stylesheet">
-    <link rel="stylesheet" href="../style/css/resetpassword_page.css" />
+    <link rel="stylesheet" href="../style/css/forgetpassword_page.css" />
     <link rel="stylesheet" href="../style/css/fonts.css" />
     <script defer src="../style/fontawesome/js/all.js"></script>
     <title>Passwort-Wiederherstellung</title>

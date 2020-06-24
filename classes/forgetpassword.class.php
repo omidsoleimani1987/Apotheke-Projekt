@@ -61,7 +61,7 @@
 
                 //ctreate email text and include link inside
                 $to = $this->email;
-                $subject = "Passwort-Wiederherstellung für Apotheke-App";
+                $subject = "Passwort-Wiederherstellung für Wienerberg Apotheke Website";
                 $message = "<h1>Passwort-Wiederherstellung</h1>";
                 $message .= "<p>Wir haben eine Anfrage zum Zurücksetzen des Passworts erhalten. Wenn Sie diese Anfrage nicht gestellt haben, ignorieren Sie diese E-Mail einfach.</p>";
                 $message .= "<p>Andernfalls finden Sie hier den Link zum Zurücksetzen des Passworts:</p>";
