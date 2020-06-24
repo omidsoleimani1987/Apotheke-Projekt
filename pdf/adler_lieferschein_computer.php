@@ -20,7 +20,7 @@ $arrayObject = new TableInfo($tableName);
 
 $array = $arrayObject->tableArray;
 
-//////////////////// ---------- dompdf part start---------- ////////////////////
+//////////////////// ---------- Dompdf part start---------- ////////////////////
 
 // include autoloader
 require $_SERVER["DOCUMENT_ROOT"].'/Dompdf/autoload.inc.php';
@@ -103,20 +103,20 @@ ob_start();
 </div>
 
 <div class="sender">
-<h1>Muster-Apotheke</h1>
+<h1>Wienerberg-Apotheke</h1>
 <pre>
 Lorem ipsum dolor sit, amet
 Musterstraße 1
 1220 Wien
 Tel: 01 888 88 88
 Fax: 01 888 88 88 8
-info@muster-apotheke.at
-http://www.muster-apotheke.at
+info@wienerberg-apotheke.at
+http://www.wienerberg-apotheke.at
 </pre>
 </div>
 
 <div class="receiver">
-<h2>Apotheke Name</h2>
+<h2>Adler Name</h2>
 <pre>
 Mag. pharm. NAME...
 Addresse
@@ -182,5 +182,3 @@ $dompdf->stream('Lieferschein.pdf', Array('Attachment'=>0));
 
 // Output the generated PDF to Browser(download automatically)
 //$dompdf->stream('omid.pdf');
-
-//////////////////////////////////////////////////////////////////////////////////

@@ -1,7 +1,13 @@
 <?php
-
+    /**
+     * this class update the infos of existing users in database
+     */
     class EditProfile extends SetQuery {
         
+        /**
+         * these properties are all strings values and they are users information
+         * @var string
+         */
         public $username = '';
         public $firstname = '';
         public $lastname = '';
@@ -10,7 +16,11 @@
         public $repassword = '';
         public $error = array('firstname'=>'', 'lastname'=>'', 'email'=>'', 'repassword'=>'');
 
-        // set the default values according to DB
+        /**
+         * this method reads first the users infos from db according the username and then sets the class properties to the default values
+         *
+         * @param string $data username 
+         */
         function __construct($data) {
             $this->username = $data;
             $userCurrent = $this->readUserInfo($data);
@@ -20,7 +30,12 @@
             $this->password = $userCurrent['password'];
         }
 
-        //validate inputs:
+        /**
+         * first validate the given data like first name and email and etc...then if they are valid data then sets the related class properties to them
+         *
+         * @param array $data of the users inputs as an array
+         * @return void
+         */
         public function validateUserInfo($data) {
             $postArray = $data;
             
@@ -57,7 +72,11 @@
             }
         }
         
-        // check the  errors, if there is none, then the main function(s) of class:
+        /**
+         * checks first the error array, when there is an error or errors, it returns an html to the screen to shows to the user that inserted field are not correct or fix the issues
+         *
+         * @return void
+         */
         public function checkError() {
             $check = true;
             $error = $this->error;
@@ -68,7 +87,10 @@
                 break;
                 }
             }
-            //the main function(s) of class - update user profile info into DB   
+
+            /**
+             * inserts the new users info throw a function into database, when successful then leads the user to the home page of the website
+             */
             if($check) {
                 $result = $this->updateUserInfo($this->username, $this->firstname, $this->lastname, $this->email, $this->password);
                 if($result == true) {

@@ -1,10 +1,23 @@
 <?php
-
+    /**
+     * this class gets the email address of the user and sends an email to the email address with a token inside the link to authenticate the user by clicking the link
+     */
     class ForgetPassword extends SetQuery {
         
+        /**
+         * a string property to store the email address of the user
+         *
+         * @var string
+         */
         public $email = '';
         public $error = array('email'=>'');
 
+        /**
+         * validate the given email address by the user
+         *
+         * @param string $data email address
+         * @return void
+         */
         public function emailValidate($data) {
             if(empty($data) || trim($data) == '') {
                 $this->error['email'] = "Es muss eine E-Mail-Adresse angegeben werden.";
@@ -15,6 +28,11 @@
             }
         }
 
+        /**
+         * checks the error array and if there is no error then create the link with the token inside it
+         *
+         * @return void
+         */
         public function checkError() {
             $check = true;
             $error = $this->error;

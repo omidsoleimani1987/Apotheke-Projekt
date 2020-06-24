@@ -1,13 +1,24 @@
 <?php
-
+/**
+ * this class gets the infos like year and month anf the name of company to look in the database to find a match with this infos and bring it to the user
+ */
 class SearchFile extends SetQuery {
-    
+    /**
+     * all these properties sre string values
+     *
+     * @var string
+     */
     public  $year = '';
     public  $month = '';
     public  $company = '';
     public  $error = array('year'=>'', 'month'=>'', 'company'=>'');
     
-    //validate inputs:
+    /**
+     * validate if user chose the correct value for the year
+     * if not sets the error in the error array 
+     * @param string $data
+     * @return void
+     */
     public function yearValidate($data) {
         if(empty($data) || trim($data) == '') {
             $this->error['year'] = 'Das Feld "Jahr" ist auszufüllen.';
@@ -16,6 +27,12 @@ class SearchFile extends SetQuery {
         }
     }
     
+    /**
+     * validate if user chose the correct value for the month
+     * if not sets the error in the error array
+     * @param string $data
+     * @return void
+     */
     public function monthValidate($data) {
         if(empty($data) || trim($data) == '') {
             $this->error['month'] = 'Das Feld "Monat" ist auszufüllen.';
@@ -24,6 +41,12 @@ class SearchFile extends SetQuery {
         }
     }
 
+    /**
+     * validate if user chose the correct value for the company name
+     * if not sets the error in the error array
+     * @param string $data
+     * @return void
+     */
     public function companyValidate($data) {
         if(empty($data) || trim($data) == '') {
             $this->error['company'] = 'Das Feld "Firma" ist auszufüllen.';
@@ -32,7 +55,11 @@ class SearchFile extends SetQuery {
         }
     }
 
-    //check for errors:
+    /**
+     * checks first the error array, when there is an error or errors, it returns an html to the screen to shows to the user that inserted field are not correct or fix the issues
+     *
+     * @return void
+     */
     public function checkError() {
         $check = true;
         $error = $this->error;
@@ -43,6 +70,7 @@ class SearchFile extends SetQuery {
                 break;
             }
         }
+
         //everything is ok, we bring the result into a table:
         if($check) {
             $result = $this->searchFile($this->year, $this->company);
@@ -54,7 +82,6 @@ class SearchFile extends SetQuery {
             for($i=0; $i<count($result); $i++) {
                 echo "<tr>";
                 foreach($result[$i] as $key => $value) {
-                    // I could not send a query with word "months" to database because I got everytime an error and I don't know why,maybe there is a problem in sql string with the exact word of "month", so I decided to do with a if condition:
                     if($result[$i]['months'] === $this->month) {
                         $id = $result[$i]['id'];
                         echo '<td><a class="table-link" href="seefile_page.php?id='. $id .'">' . $value . '</a></td>';

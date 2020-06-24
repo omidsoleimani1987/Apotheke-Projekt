@@ -1,7 +1,14 @@
 <?php
-
+    /**
+     * this class has methods to sign up users into database
+     * gets the users infos and validate them and then insert them into db
+     */
     class UserSignup extends SetQuery {
         
+        /**
+         * these properties are all strings values and they are users information
+         * @var string
+         */
         public $firstname = '';
         public $lastname = '';
         public $email = '';
@@ -10,7 +17,12 @@
         public $repassword = '';
         public $error = array('firstname'=>'', 'lastname'=>'', 'email'=>'', 'username'=>'', 'password'=>'', 'repassword'=>'');
 
-        //validate inputs:
+        /**
+         * this method gets the user first name and validate it and sets the related property to it
+         * by letting this field empty or give an incorrect value, it will set an index of error array to the related field
+         * @param string $data
+         * @return void
+         */
         public function firstnameValidate($data) {
             if(empty($data) || trim($data) == '') {
                 $this->error['firstname'] = "Das Feld Vorname ist auszufüllen.";
@@ -21,6 +33,12 @@
             }
         }
 
+        /**
+         * this method gets the user last name and validate it and sets the related property to it
+         * by letting this field empty or give an incorrect value, it will set an index of error array to the related field
+         * @param string $data
+         * @return void
+         */
         public function lastnameValidate($data) {
             if(empty($data) || trim($data) == '') {
                 $this->error['lastname'] = "Das Feld Nachname ist auszufüllen.";
@@ -31,6 +49,12 @@
             }
         }
 
+        /**
+         * this method gets the user's email address and validate it and sets the related property to it
+         * by letting this field empty or give an incorrect value, it will set an index of error array to the related field
+         * @param string $data
+         * @return void
+         */
         public function emailValidate($data) {
             if(empty($data) || trim($data) == '') {
                 $this->error['email'] = "Es muss eine E-Mail-Adresse angegeben werden.";
@@ -41,6 +65,12 @@
             }
         }
 
+        /**
+         * this method gets the username that is chose by user and validate it to not be repeated from other users and sets the related property to it
+         * by letting this field empty or give an incorrect value, it will set an index of error array to the related field
+         * @param string $data
+         * @return void
+         */
         public function usernameValidate($data) {
             if(empty($data) || trim($data) == '') {
                 $this->error['username'] = 'Das Feld "Benutzername" ist auszufüllen.';
@@ -56,6 +86,13 @@
             }
         }
 
+        /**
+         * this method gets the password that is chose by user and compare it to repeated password from user and sets the related property to it
+         * by letting this field empty or give an incorrect value, it will set an index of error array to the related field
+         * @param string $data1
+         * @param string $data2
+         * @return void
+         */
         public function passwordValidate($data1, $data2) {
             if(empty($data1) || trim($data1) == '') {
                 $this->error['password'] = 'Das Feld "Passwort" ist auszufüllen.';
@@ -68,13 +105,21 @@
             }
         }
 
-        // we check first the usernames to not allow to have time of the same username
+        /**
+         * gets the usernames from db
+         *
+         * @return array of usernames which are already inserted into db
+         */
         protected function getUsernames() {
             $usersresult = $this->readUsers();
             return $usersresult;
         }
 
-        // check the  errors, if there is none, then the main function(s) of class:
+        /**
+         * checks first the error array, when there is an error or errors, it returns an html to the screen to shows to the user that inserted field are not correct or fix the issues
+         *
+         * @return void
+         */
         public function checkError() {
             $check = true;
             $error = $this->error;
@@ -86,7 +131,9 @@
                 }
             }
 
-            //the main function(s) of class - register user in DB
+            /**
+             * when there is no errors it inserts the users info into db and sends the user to login page
+             */
             if($check) {
                 $this->registerUser($this->firstname, $this->lastname, $this->email, $this->username, $this->password);
                 header ("location: $app_path/app/login_page.php?message=Registrierung erfolgreich. Sie können sich jetzt anmelden.&status=success");

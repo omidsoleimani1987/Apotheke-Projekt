@@ -1,12 +1,29 @@
 <?php
-
+/**
+ * this class is the main operation of the application
+ * here user inserts the new values for the titles and the table in database will be updated
+ */
 class Main extends SetQuery {
 
-    // first we read all info of table from DB and then coparing the to users inputs, when there is differences then we update the table with new values of users inputs
+    /**
+     * first we read all info of table from DB and 
+     *
+     * @param string $tableName
+     * @param int $medId
+     * @return void
+     */
     public function readMed($tableName, $medId) {
         return $this->readAll($tableName, $medId);
     }
 
+    /**
+     * then with this method we compare the to users inputs, when there is differences then we update the table with new values of users inputs
+     *
+     * @param string $tableName
+     * @param int $medId
+     * @param array $postArray
+     * @return void
+     */
     public function postInfo($tableName, $medId, $postArray) {
         $InfoArray = $this->readAll($tableName, $medId);
         if($postArray['Datum'] != '') {

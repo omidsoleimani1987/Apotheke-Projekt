@@ -1,7 +1,13 @@
 <?php
-
+    /**
+     * this class gets the excel file and insets the data into the database
+     */
     class UploadFile extends SetQuery {
-
+        /**
+         * all these properties are string
+         *
+         * @var string
+         */
         private $username = '';
         public  $year = '';
         public  $month = '';
@@ -13,11 +19,21 @@
         private $fileExtension = '';
         public  $error = array('year'=>'', 'month'=>'', 'company'=>'', 'type'=>'', 'sendto'=>'', 'file'=>'');
 
+        /**
+         * sets the user property to register who uploaded this excel file
+         *
+         * @param string $user
+         */
         function __construct($user) {
             $this->username = $user;
         }
 
-        //validate inputs:
+        /**
+         * validate if user chose the correct value for the year
+         * if not sets the error in the error array 
+         * @param string $data
+         * @return void
+         */
         public function yearValidate($data) {
             if(empty($data) || trim($data) == '') {
                 $this->error['year'] = 'Das Feld "Jahr" ist auszufüllen.';
@@ -26,6 +42,12 @@
             }
         }
         
+        /**
+         * validate if user chose the correct value for the month
+         * if not sets the error in the error array
+         * @param string $data
+         * @return void
+         */
         public function monthValidate($data) {
             if(empty($data) || trim($data) == '') {
                 $this->error['month'] = 'Das Feld "Monat" ist auszufüllen.';
@@ -34,6 +56,12 @@
             }
         }
 
+        /**
+         * validate if user chose the correct value for the company name
+         * if not sets the error in the error array
+         * @param string $data
+         * @return void
+         */
         public function companyValidate($data) {
             if(empty($data) || trim($data) == '') {
                 $this->error['company'] = 'Das Feld "Firma" ist auszufüllen.';
@@ -42,6 +70,12 @@
             }
         }
 
+        /**
+         * validate if user chose the correct value for the type of the delivery
+         * if not sets the error in the error array
+         * @param string $data
+         * @return void
+         */
         public function typeValidate($data) {
             if(empty($data) || trim($data) == '') {
                 $this->error['type'] = 'Das Feld "Art" ist auszufüllen.';
@@ -50,6 +84,12 @@
             }
         }
 
+        /**
+         * validate if user chose the correct value for the location of the delivery
+         * if not sets the error in the error array
+         * @param string $data
+         * @return void
+         */
         public function sendtoValidate($data) {
             if(empty($data) || trim($data) == '') {
                 $this->error['sendto'] = 'Das Feld "Es Geht über" ist auszufüllen.';
@@ -58,15 +98,24 @@
             }
         }
 
+        /**
+         * sets the detail property for the extra detail given by the user
+         *
+         * @param string $data
+         * @return void
+         */
         public function detailValidate($data) {
             $this->detail = htmlspecialchars($data);
         }
         
-        //validate file extension:
+        /**
+         * this method validate the file extension of the excel file
+         *
+         * @return void
+         */
         public function extensionValidate() {
             $extension_array = ['xls', 'xlsx'];
             $file_extension = strtolower(pathinfo($_FILES['excelfile']['name'], PATHINFO_EXTENSION));
-            //if(in_array($file_extension, $extension_array)) {
             if(in_array($file_extension, $extension_array)) {
                 $this->fileExtension = $file_extension;
             } else {
@@ -75,7 +124,11 @@
             
         }
         
-        //check for errors:
+        /**
+         * checks first the error array, when there is an error or errors, it returns an html to the screen to shows to the user that inserted field are not correct or fix the issues
+         *
+         * @return void
+         */
         public function checkError() {
             $check = true;
             $error = $this->error;
@@ -114,9 +167,14 @@
             }    
         }
 
-        //a function to create a table with default structure in database:
+        /**
+         * a method to create a table with default structure in database
+         *
+         * @param array $array
+         * @return void
+         */
         public function saveExcel($array) {
-            //////replaceing the space and dot with underscore , because we use this session filename as table name in sql query for database:
+            //////replacing the space and dot with underscore , because we use this session filename as table name in sql query for database:
             $tableName = $_SESSION['libraryFilename'];
             $tableName = str_replace (' ', '_', $tableName);
             $tableName = str_replace ('.', '_', $tableName);
@@ -147,7 +205,7 @@
 
                     $this->insertExcel($tableName, $pzn, $Bezeichnung, $Menge, $Einheit, $adler_k, $billroth_k, $citygate_k, $hoffnung_k, $retz_k, $wienerberg_k, $phönix_k, $kwizda_k, $herba_k, $phönix_prozent, $kwizda_prozent, $herba_prozent);
                 }
-                //inserting the last row as Summe just for the Bezeichnung field:
+                //inserting the last row as "Summe" just for the "Bezeichnung" field:
                 $lastRow = $this->insertSummeRow($tableName);
                 if($lastRow == true) {
                     return true;

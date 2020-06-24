@@ -1,7 +1,16 @@
 <?php
-
+/**
+ * this class is used for the search_work page side menu to filter the previewed links
+ * the pharmacies without any order (zero amount) will be filtered to not be displayed in menu
+ */
 class IconLists extends SetQuery {
     
+    /**
+     * reads all the records and returns only the not zero amounts in html dom (menu) 
+     *
+     * @param string $tableName
+     * @return void
+     */
     public function getIcons($tableName) {
 
         $iconsArray = $this->iconsInfo($tableName);

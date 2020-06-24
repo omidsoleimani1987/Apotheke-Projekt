@@ -1,8 +1,14 @@
 <?php
-
+    /**
+     * this class reads all the records from "buy" table and show it all as a html table to the user
+     */
     class SeeAll extends SetQuery {
         
-        // we read all the records of the table "buy" to show them as a html table
+        /**
+         * reads all the records of the table "buy"
+         *
+         * @return void
+         */
         public function allBuy() {
             $allInfo = $this->readAllbuy();
             for($i=0; $i<count($allInfo); $i++) {

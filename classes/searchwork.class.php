@@ -1,12 +1,23 @@
 <?php
-
+/**
+ * this class gets a title for medicine from user and reads just related record to the given title and show it to the user
+ * in this class(page) we need to create a sum row and sum column of the values from table and update it every time we get to this page, because or default structure is that our excel file has no sum row and column
+ */
 class Searchwork extends SetQuery {
     
-    // in this class(page) we need to create a sum row and sum column of the values from table and update it every time we get to this page, because or default structure is that our excel file has no sum row and column 
+    /**
+     * these three properties are string values
+     *
+     * @var string
+     */
     public  $title = '';
     public  $tableName = '';
     public  $error = array('title'=>'');
-
+    /**
+     * these properties are integer values
+     *
+     * @var int
+     */
     public $rowSumme_k = 0;
     public $rowSumme_v = 0;
     
@@ -31,18 +42,31 @@ class Searchwork extends SetQuery {
     public $Herba_v = 0;
     public $Summe_v = 0;
 
-    //by the creation of class , we need the name of table for further operations
+    /**
+     * by the creation of class , we need the name of table for further operations
+     *
+     * @param string $data
+     */
     function __construct($data) {
         $this->tableName = $data;
     }
 
-    //by the creation of class , we read all the data from table(in DB)
+    /**
+     * by the loading the page, first we read all the data from table(in DB)
+     *
+     * @return array
+     */
     public function readMed() {
         $allResult = $this->readAllMed($this->tableName);
         return $allResult;
     }
     
-    // validate the title of medicine, which user searched for it
+    /**
+     * validate the title of medicine, which user searched for it
+     *
+     * @param string $data
+     * @return void
+     */
     public function titleValidate($data) {
         if(empty($data) || trim($data) == '') {
             $this->error['title'] = 'Das Feld "Bezeichnung" ist auszufüllen.';
@@ -51,7 +75,11 @@ class Searchwork extends SetQuery {
         }
     }
 
-    // check the  errors, if there is none, then the main function(s) of class:
+    /**
+     * checks first the error array, when there is an error or errors, it returns an html to the screen to shows to the user that inserted field are not correct or fix the issues
+     *
+     * @return void
+     */
     public function checkError() {
         $check = true;
         $error = $this->error;
@@ -92,7 +120,11 @@ class Searchwork extends SetQuery {
         }
     }
 
-    //here we create the sum column (the sum of each row)
+    /**
+     * here we create the sum column (the sum of each row)
+     * and update the sum row of the table every time that page loads
+     * @return void
+     */
     public function setRowSumme() {
         $ResultArray = $this->readAllMed($this->tableName);
         $summeId = count($ResultArray) - 1;
@@ -114,7 +146,11 @@ class Searchwork extends SetQuery {
         }
     }
     
-    //here we create the sum row (the sum of each column)
+    /**
+     * here we create the sum row (the sum of each column)
+     * and update the sum column of the table every time that page loads
+     * @return void
+     */
     public function setcolumnSumme() {
         $ResultArray = $this->readAllMed($this->tableName);
         $summeId = count($ResultArray) - 1;
@@ -151,7 +187,11 @@ class Searchwork extends SetQuery {
 
     }
 
-    //get the info of table to preview to user
+    /**
+     * get the info of table to preview to user
+     *
+     * @return array
+     */
     public function getSumme() {
         $ResultArray = $this->readAllMed($this->tableName);
         return $ResultArray;

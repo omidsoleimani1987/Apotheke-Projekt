@@ -1,12 +1,25 @@
 <?php
-
+    /**
+     * this class changes the entrance code of the website and replace the old one with the new given code from user into the db
+     */
     class CodeChange extends SetQuery {
         
+        /**
+         * alls these properties are string type
+         *
+         * @var string
+         */
         public $code = '';
         public $recode = '';
         public $error = array('firstname'=>'', 'lastname'=>'', 'email'=>'', 'username'=>'', 'code'=>'', 'recode'=>'');
 
-        //validate inputs:
+        /**
+         * this method gets the new code from user and validate it to be a correct and sets the related properties to it
+         *
+         * @param string $data1
+         * @param string $data2
+         * @return void
+         */
         public function codeValidate($data1, $data2) {
             if(empty($data1) || trim($data1) == '') {
                 $this->error['code'] = 'Das Feld "Passwort" ist auszufüllen.';
@@ -19,7 +32,11 @@
             }
         }
 
-        // check the  errors, if there is none, then the main function(s) of class:
+        /**
+         * this method checks the error array if there is none then it runs the main function of the method
+         *
+         * @return void
+         */
         public function checkError() {
             $check = true;
             $error = $this->error;
@@ -30,7 +47,10 @@
                     break;
                 }
             }
-            //the main function(s) of class - insert new code into DB
+            
+            /**
+             * this function inserts the new code into the db (replace the old one with the new one)
+             */
             if($check) {
                 $this->insertNewCode($this->code);
                 header("Location: $app_path/app/home_page.php?message=Der Code wurde erfolgreich gewechselt.&status=success");

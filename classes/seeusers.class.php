@@ -1,8 +1,13 @@
 <?php
-
+    /**
+     * first reads the all records of "users" table from db and then show it to user
+     */
     class SeeUsers extends SetQuery {
         
-        //read all info from "users" table of DB and preview all users to just admin(s) of website
+        /**
+         * read all records from "users" table of DB and preview all users to just admin(s) of website
+         * @return void
+         */
         public function readusers() {
             $usersInfo = $this->readusersInfo();
             for($i=0; $i<count($usersInfo); $i++) {
