@@ -103,25 +103,20 @@ ob_start();
 </div>
 
 <div class="sender">
-<h1>Muster-Apotheke</h1>
+<h1>Wienerberg-Apotheke</h1>
 <pre>
-Lorem ipsum dolor sit, amet
-Musterstraße 1
-1220 Wien
-Tel: 01 888 88 88
-Fax: 01 888 88 88 8
-info@muster-apotheke.at
-http://www.muster-apotheke.at
+Wienerberg Apotheke
+Tesarekplatz 1
+1100 Wien
+Tel: +431 6160530
+Fax: +431 6160530 5
+info@wienerberg-apotheke.at
+https://www.wienerberg-apotheke.at
 </pre>
 </div>
 
 <div class="receiver">
-<h2>Apotheke Name</h2>
-<pre>
-Mag. pharm. NAME...
-Addresse
-1010 Wien
-</pre>
+<h2>Phönix Apotheke</h2>
 </div>
 
 <div class="detail">
