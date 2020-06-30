@@ -12,7 +12,7 @@ class DatabaseConnect {
     private $host = "localhost";
     private $username = "root";
     private $password = "";
-    private $databaseName = "wifi";
+    private $databaseName = "my-wifi-project";
     
     /**
      * this method runs the pdo connection 
